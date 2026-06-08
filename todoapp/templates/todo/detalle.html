@@ -11,15 +11,23 @@
             </header>
             <p>{{ todo["description"] | safe }}</p>
             <footer>
-                <form  method="post">
+                <form method="post" action="{{ url_for('todo.detalle', todo_id=todo['todo_id']) }}" style="display:inline;">
                     <input type="hidden" name="state" value="{{ todo['completed'] }}">
                     <button type="submit">
                         {% if todo['completed']%}
-                            Poner en pendinte
+                            Poner en pendiente
                         {% else %}
-                            Completar Tarea!
+                            Completar Tarea
                         {% endif %}
                     </button>
+                </form>
+
+                <a role="button" style="margin-bottom: 20px; width: 100%;" href="{{ url_for('todo.editar', todo_id=todo['todo_id']) }}">
+                    Editar Tarea
+                </a>
+
+                <form method="post" action="{{ url_for('todo.eliminar', todo_id=todo['todo_id']) }}" style="display:inline;">
+                    <button type="submit" style="color:red;" onclick="return confirm('¿Estás seguro de que quieres eliminar esta tarea?');">Eliminar Tarea</button>
                 </form>
             </footer>
         </article>

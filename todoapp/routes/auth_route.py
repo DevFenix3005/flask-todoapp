@@ -66,7 +66,7 @@ def login():
         if error is None:
             session.clear()
             session["user_id"] = user["user_id"]
-            return redirect(url_for("todo.formulario"))
+            return redirect(url_for("todo.visualizacion"))
 
         flash(error)
 

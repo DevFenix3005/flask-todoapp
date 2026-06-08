@@ -42,3 +42,23 @@ def update_todo_by_id(db: sqlite3.Connection, todo_id: int, user_id: int, state:
         ),
     ).fetchone()
     db.commit()
+
+
+def update_todo_details(db: sqlite3.Connection, todo_id: int, user_id: int, title: str, description: str):
+    db.execute(
+        """
+        UPDATE todos
+        SET title = ?, description = ?
+        WHERE todo_id = ? AND user_id = ?
+        """,
+        (title, description, todo_id, user_id),
+    )
+    db.commit()
+
+
+def delete_todo_by_id(db: sqlite3.Connection, todo_id: int, user_id: int):
+    db.execute(
+        "DELETE FROM todos WHERE todo_id = ? AND user_id = ?",
+        (todo_id, user_id),
+    )
+    db.commit()

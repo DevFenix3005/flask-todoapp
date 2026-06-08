@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Editar Tarea{% endblock %}
+
+{% block content %}
+<form method="post">
+    <label for="todo">Titulo del todo</label>
+    <input id="todo" name="todo_title" value="{{ todo['title'] }}" required />
+
+    <label for="description">Descripcion de mi todo</label>
+    <textarea id="description" name="todo_desc" required>{{ todo['description'] }}</textarea>
+
+    <button type="submit">Guardar Cambios</button>
+</form>
+
+<br>
+<a href="{{ url_for('todo.detalle', todo_id=todo['todo_id']) }}">Cancelar</a>
+
+{% endblock %}
