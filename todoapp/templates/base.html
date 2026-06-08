@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>TodoApp | {% block title %}{% endblock %}</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    />
+    <style>
+      li.done {
+          text-decoration: line-through;
+          color: var(--pico-secondary-hover-background);
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container">
+        <nav>
+        <ul>
+            <li><strong>TodoApp</strong></li>
+        </ul>
+        <ul>
+            {% if g.user %}
+              <li><a href="{{ url_for('todo.formulario') }}">Formulario</a></li>
+              <li><a href="{{ url_for('todo.visualizacion') }}">Visualizacion</a></li>
+              <li>
+                  <details class="dropdown">
+                  <summary>
+                      {{ g.user["username"].capitalize() }}
+                  </summary>
+                  <ul dir="rtl">
+                      <li><a href="{{ url_for('auth.logout') }}">Logout</a></li>
+                  </ul>
+                  </details>
+              </li>              
+            {% else %}
+              <li><a href="{{ url_for('auth.register') }}">Registro</a></li>
+              <li><a href="{{ url_for('auth.login') }}">Login</a></li>
+            {% endif %}
+        </ul>
+        </nav>
+        <hr/>
+        {% for message in get_flashed_messages() %}
+          <div class="flash">{{ message }}</div>
+        {% endfor %}
+        {% block content %}{% endblock %}
+    </main>
+  </body>
+</html>

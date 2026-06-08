@@ -1,0 +1,39 @@
+# --- Python Basics ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+build/
+dist/
+*.egg-info/
+
+# --- Flask Specifics ---
+instance/
+.webassets-cache
+.env
+.flaskenv
+
+# --- Testing and Coverage ---
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+
+# --- Database ---
+*.db
+*.sqlite
+
+# --- Editor/IDE Specifics ---
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# --- OS Specifics ---
+.DS_Store
+Thumbs.db

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Detalle de la tarea{% endblock %}
+
+{% block content %}
+
+    {% if todo %}
+        <article>
+            <header>
+                <h3>{{ todo["title"] }}</h3>
+            </header>
+            <p>{{ todo["description"] | safe }}</p>
+            <footer>
+                <form  method="post">
+                    <input type="hidden" name="state" value="{{ todo['completed'] }}">
+                    <button type="submit">
+                        {% if todo['completed']%}
+                            Poner en pendinte
+                        {% else %}
+                            Completar Tarea!
+                        {% endif %}
+                    </button>
+                </form>
+            </footer>
+        </article>
+    {% else%}
+        <p>¡Esta tarea no la puedes acceder!</p>
+    {% endif %}
+
+{% endblock %}

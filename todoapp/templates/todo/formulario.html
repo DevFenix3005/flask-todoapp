@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Formulario{% endblock %}
+
+{% block content %}
+<form method="post">
+    <label for="todo">Titulo del todo</label>
+    <input id="todo" name="todo_title"/>
+
+    <label for="description">Descripcion de mi todo</label>
+    <textarea id="description" name="todo_desc"></textarea>
+
+    <button type="submit">Agregar Todo</button>
+
+</form>
+
+{% endblock %}
